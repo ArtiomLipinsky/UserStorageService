@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.4\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,10 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces.cs" />
+    <Compile Include="Interfaces\IIdGenerator.cs" />
+    <Compile Include="Interfaces\IStateSaveRecovery.cs" />
+    <Compile Include="Interfaces\IUnique.cs" />
+    <Compile Include="Interfaces\IMasterServiceGeneric.cs" />
+    <Compile Include="Interfaces\ISlaveServiceGeneric.cs" />
+    <Compile Include="Interfaces\IServiceReplicatorGeneric.cs" />
+    <Compile Include="ReplicatorsImlementations\Domain\DomainServiceReplicatorGeneric.cs" />
+    <Compile Include="Interfaces\ChangeMessageEventArg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageService.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="ServiceImplimetation\StorageService.cs" />
+    <Compile Include="StoredEssence\User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReplicatorsImlementations\Aplication\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
